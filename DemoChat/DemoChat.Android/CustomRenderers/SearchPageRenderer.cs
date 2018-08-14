@@ -43,8 +43,8 @@ namespace DemoChat.Droid.CustomRenderers
 
         private void AddSearchToToolBar()
         {
-           // var maintoolbar = MainActivity.ToolBar;
-            var maintoolbar = FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Id.toolbar);
+            var maintoolbar = MainActivity.ToolBar;
+            //var maintoolbar = FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Id.toolbar);
 
             if (maintoolbar == null || Element == null)
             {

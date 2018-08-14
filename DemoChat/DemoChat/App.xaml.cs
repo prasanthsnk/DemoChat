@@ -23,9 +23,9 @@ namespace DemoChat
             //DashboardPage dashboardPage = new DashboardPage();
             //NavigationPage.SetHasNavigationBar(dashboardPage, false);
             //   Navigation.PushAsync(dashboardPage);
-            // MainPage = new DetailPage();
+             MainPage = new DetailPage();
             // MainPage = new NavigationPage(new MasterTabbedPage());
-            MainPage = new DetailPage();
+            //MainPage = new NavigationPage(new DetailPage());
         } 
 
         protected override void OnStart()
