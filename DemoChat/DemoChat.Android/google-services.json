@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "267289181795",
+    "firebase_url": "https://demochat-9aa1f.firebaseio.com",
+    "project_id": "demochat-9aa1f",
+    "storage_bucket": "demochat-9aa1f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:267289181795:android:476c42c4172c44d9",
+        "android_client_info": {
+          "package_name": "com.companyname.DemoChat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "267289181795-6cebqnr736u7am65l8up99n1qpn6hmlp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBsQDzw1nADLeSnWcESIkTqG_2XumESIcI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

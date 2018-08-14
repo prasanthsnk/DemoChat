@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+            xmlns:views="clr-namespace:DemoChat.Views"
+            android:TabbedPage.ToolbarPlacement="Bottom"
+             x:Class="DemoChat.Views.DetailPage">
+  <!--Pages can be added as references or inline-->
+    <NavigationPage  Title="Region" Icon="region.png">
+        <x:Arguments>
+            <views:ChatPage  Title="Region"/>
+        </x:Arguments>
+    </NavigationPage>
+    <NavigationPage Title="Notification" Icon="notification.png">
+        <x:Arguments>
+            <views:MessageListPage  Title="Notification"/>
+        </x:Arguments>
+    </NavigationPage>
+    <!--<NavigationPage Title="Saved Messages" Icon="message.png">
+        <x:Arguments>
+            <views:TestingPage/>
+        </x:Arguments>
+    </NavigationPage>
+    <NavigationPage Title="More" Icon="more.png">
+        <x:Arguments>
+            <views:SlidingPage/>
+        </x:Arguments>
+    </NavigationPage>-->
+</TabbedPage>

@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DemoChat.Views.SlidingPage">
+    <AbsoluteLayout VerticalOptions="FillAndExpand" x:Name="Page">
+        <StackLayout  AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" BackgroundColor="White">
+            <Image Source="demo.png" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand" >
+                <!--<Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="UpBlue_Tapped"/>
+                    <PanGestureRecognizer PanUpdated="UpBlue_Tapped" />
+                </Image.GestureRecognizers>-->
+            </Image>
+        </StackLayout>
+
+        <StackLayout x:Name="PageDown" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All"
+                     Orientation="Vertical" VerticalOptions="FillAndExpand" Spacing="0">
+            <StackLayout VerticalOptions="FillAndExpand" BackgroundColor="#006df0">
+                <Image Source="empty_contact.png" HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand" >
+                    <!--<Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="DownWhite_Tapped"/>
+                        <PanGestureRecognizer PanUpdated="DownWhite_Tapped" />
+                    </Image.GestureRecognizers>-->
+                </Image>
+            </StackLayout>
+        </StackLayout>
+
+    </AbsoluteLayout>
+</ContentPage>
+

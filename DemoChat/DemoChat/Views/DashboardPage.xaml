@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
+             xmlns:local="clr-namespace:DemoChat.Views.Controls"
+             x:Class="DemoChat.Views.DashboardPage">
+    <Grid x:Name="MainLayout">
+        <!--<maps:Map
+            x:Name="MyMap"
+            IsShowingUser="true"
+            MapType="Street"
+                 RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height,Factor=1,Constant=0}"
+            RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width,Factor=1,Constant=0}"
+        />-->
+        <local:CustomMap x:Name="MyMap" MapType="Street"
+                          RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height,Factor=1,Constant=0}"
+            RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width,Factor=1,Constant=0}"/>
+
+
+        <!--CHILD ELEMTENTS HERE-->
+        <StackLayout  x:Name="QuickMenuPullLayout"
+                          HorizontalOptions="FillAndExpand"     
+                          VerticalOptions="End"
+                          Spacing="0">
+            <Grid x:Name="QuickMenuLayout">
+                <StackLayout BackgroundColor="LightGray"/>
+                <StackLayout  x:Name="QuickMenuInnerLayout"  Padding="20,20,20,10"
+                                      VerticalOptions="FillAndExpand"
+                                      HorizontalOptions="FillAndExpand">
+                    <Label Text="Plant Area" 
+                                   TextColor="Black" 
+                               FontAttributes="Bold" 
+                                   HorizontalOptions="FillAndExpand"
+                                   FontSize="Small"/>
+                </StackLayout>
+            </Grid>
+
+            <Grid x:Name="Notification"  HeightRequest="200">
+                <StackLayout BackgroundColor="White" ></StackLayout>
+
+                <ListView x:Name="chatList" HasUnevenRows="True"
+                           ItemsSource="{Binding ChatList}" ItemSelected="OnItemSelected">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <!--<TextCell Text="{Binding title}" Detail="{Binding Message}"/>-->
+                            <ViewCell>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="3"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <StackLayout BackgroundColor="Green"/>
+                                    <StackLayout  Grid.Column="1">
+                                        <Grid Padding="0,15,0,10">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="5*"/>
+                                                <ColumnDefinition Width="8*"/>
+                                                <ColumnDefinition Width="25*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Image Source="xamarin.png" Margin="0, 5, 0, 0" VerticalOptions="Start"  HeightRequest="20"/>
+                                            <StackLayout Grid.Column="1">
+                                                <Label TextColor="Gray" Text="Source" FontSize="Micro"/>
+                                                <Label TextColor="Black" Text="{Binding title}" FontAttributes="Bold"  FontSize="Small"/>
+                                            </StackLayout>
+                                            <StackLayout Grid.Column="2" VerticalOptions="StartAndExpand">
+                                                <Label TextColor="Gray" Text="Message" FontSize="Micro"/>
+                                                <Label TextColor="Black" Text="{Binding Message}" FontAttributes="Bold"  FontSize="Small" Grid.Row="1"/>
+                                                <Grid>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="4*"/>
+                                                        <ColumnDefinition Width="3*"/>
+                                                    </Grid.ColumnDefinitions>
+                                                    <Frame  Grid.Column="1" CornerRadius="20" Padding="0" BackgroundColor="#c5c5c5" VerticalOptions="Center" HorizontalOptions="Center">
+                                                        <StackLayout Orientation="Horizontal" HeightRequest="15" Padding="10">
+                                                            <Image Source="message.png" HeightRequest="15" WidthRequest="15"  VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"/>
+                                                            <Label Text="12"  VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"/>
+                                                        </StackLayout>
+                                                    </Frame>
+                                                </Grid>
+                                            </StackLayout>
+                                        </Grid>
+                                    </StackLayout>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
+        </StackLayout>
+    </Grid>
+</ContentPage>

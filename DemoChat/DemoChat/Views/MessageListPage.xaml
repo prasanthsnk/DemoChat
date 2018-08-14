@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DemoChat.Views.MessageListPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <ListView x:Name="chatList" HasUnevenRows="True"
+                           ItemsSource="{Binding ChatList}"
+                      ItemSelected="OnItemSelected">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <!--<TextCell Text="{Binding title}" Detail="{Binding Message}"/>-->
+                        <ViewCell>
+                            <Grid Padding="0,15,0,10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="5*"/>
+                                    <ColumnDefinition Width="30*"/>
+                                </Grid.ColumnDefinitions>
+                                <Image   Source="xamarin.png" Margin="0, 5, 0, 0"  VerticalOptions="Start"  HeightRequest="20"/>
+                                <StackLayout Grid.Column="1"   VerticalOptions="Start" Spacing="0">
+                                    <Label TextColor="Gray" Text="Source" FontSize="Micro"/>
+                                    <Label TextColor="Black" Text="{Binding title}" FontAttributes="Bold"  FontSize="Small" />
+                                    <Label TextColor="Gray" Text="Message" FontSize="Micro" Margin="0,15,0,0"/>
+                                    <Label TextColor="Black" Text="{Binding Message}" FontAttributes="Bold"  FontSize="Small" />
+                                </StackLayout>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

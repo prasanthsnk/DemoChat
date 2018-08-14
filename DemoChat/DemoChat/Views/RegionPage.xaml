@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DemoChat.Views.RegionPage"
+    Title="Region">
+    <ContentPage.Content>
+        <StackLayout>
+            <ListView x:Name="lstRegion"
+                      ItemsSource="{Binding RegionList}"
+                      HasUnevenRows="True"
+                       ItemSelected="OnItemSelected"  RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height,Factor=1,Constant=0}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <!--<StackLayout Margin="8">
+                                <Label Text="{Binding Name}"
+                                       FontAttributes="Bold" />
+                            </StackLayout>-->
+                            <Grid ColumnSpacing="3" Padding="5">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="40"></ColumnDefinition>
+                                    <ColumnDefinition Width="15"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <!--<BoxView Color="CornflowerBlue"
+                                     WidthRequest="40"
+                                     HeightRequest="40"
+                                     VerticalOptions="Center"
+                                     HorizontalOptions="Center"  Grid.Column="0"/>-->
+                                <Frame HeightRequest="40" WidthRequest="40" HasShadow="True" CornerRadius="20" HorizontalOptions="Center" VerticalOptions="Center" Margin="0" Padding="0" 
+
+                        Grid.Column="0" Grid.Row="0">
+                                    <!--<Label Text="R" TextColor="Black" HorizontalOptions="Center" VerticalOptions="Center" 
+                        HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>-->
+                                    <Image Source="empty_contact.jpg" />
+                                </Frame>
+                                <Frame Grid.Row="0"   HeightRequest="20" WidthRequest="20" OutlineColor="Transparent" HasShadow="False" Grid.Column="1"  HorizontalOptions="Start" VerticalOptions="Start" Margin="0" Padding="0" 
+                       BackgroundColor="Transparent">
+                                    <Label Text="{Binding IsReadCount}" TextColor="Green"  HorizontalOptions="Start" VerticalOptions="Start" 
+                        HorizontalTextAlignment="Start" VerticalTextAlignment="Start" FontAttributes="Bold"/>
+                                </Frame>
+                                <Frame Grid.Row="0" OutlineColor="Transparent"   HasShadow="False" Grid.Column="2" BackgroundColor="Transparent">
+                                    <Label TextColor="Black" Text="{Binding Name}" FontAttributes="Bold"  />
+                                </Frame>
+                                
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
