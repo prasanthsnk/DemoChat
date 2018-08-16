@@ -6,14 +6,19 @@
             android:TabbedPage.ToolbarPlacement="Bottom"
              x:Class="DemoChat.Views.DetailPage">
   <!--Pages can be added as references or inline-->
-    <NavigationPage  Title="Region" Icon="region.png">
+    <NavigationPage  Title="Home" Icon="region.png">
         <x:Arguments>
-            <views:ChatPage  Title="Region"/>
+            <views:SourceListPage  Title="Home"/>
         </x:Arguments>
     </NavigationPage>
     <NavigationPage Title="Notification" Icon="notification.png">
         <x:Arguments>
             <views:MessageListPage  Title="Notification"/>
+        </x:Arguments>
+    </NavigationPage>
+    <NavigationPage Title="Saved Messages" Icon="notification.png">
+        <x:Arguments>
+            <views:ChatPage  Title="Saved Messages"/>
         </x:Arguments>
     </NavigationPage>
     <!--<NavigationPage Title="Saved Messages" Icon="message.png">

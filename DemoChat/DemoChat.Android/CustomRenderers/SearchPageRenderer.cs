@@ -4,10 +4,11 @@ using Android.Views.InputMethods;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 using SearchView = Android.Support.V7.Widget.SearchView;
-
 using DemoChat.Droid.CustomRenderers;
 using DemoChat.Views.Controls;
-using Plugin.CurrentActivity;
+using Android.Content;
+using System.ComponentModel;
+using System.Collections.Generic;
 
 [assembly: ExportRenderer(typeof(SearchPage), typeof(SearchPageRenderer))]
 namespace DemoChat.Droid.CustomRenderers
@@ -15,6 +16,15 @@ namespace DemoChat.Droid.CustomRenderers
     class SearchPageRenderer : PageRenderer
     {
         private SearchView _searchView;
+        //Hashtable MenuPages = new Hashtable();
+        HashSet<string> MenuPages = new HashSet<string>();
+
+        private  bool isLoaded = false;
+        readonly Context context;
+        public SearchPageRenderer(Context context) : base(context)
+        {
+            this.context = context;
+        }
 
         protected override void OnElementChanged(ElementChangedEventArgs<Page> e)
         {
@@ -27,13 +37,25 @@ namespace DemoChat.Droid.CustomRenderers
 
             AddSearchToToolBar();
         }
+        protected override void OnElementPropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            base.OnElementPropertyChanged(sender, e);
+            
+            if (e.PropertyName == "ShowSearch" && !isLoaded)
+            {
+               // MenuPages.Add(sender.GetType().Name);
+                Device.BeginInvokeOnMainThread(() => {
+                    AddSearchToToolBar();
+                });
+            }
+        }
 
         protected override void Dispose(bool disposing)
         {
             if (_searchView != null)
             {
-                _searchView.QueryTextChange += searchView_QueryTextChange;
-                _searchView.QueryTextSubmit += searchView_QueryTextSubmit;
+                _searchView.QueryTextChange += SearchView_QueryTextChange;
+                _searchView.QueryTextSubmit += SearchView_QueryTextSubmit;
             }
             //var maintoolbar = (CrossCurrentActivity.Current?.Activity as MainActivity)?.FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Id.toolbar);
             var maintoolbar = MainActivity.ToolBar;
@@ -41,16 +63,17 @@ namespace DemoChat.Droid.CustomRenderers
             base.Dispose(disposing);
         }
 
-        private void AddSearchToToolBar()
+        private void AddSearchToToolBar()   
         {
             var maintoolbar = MainActivity.ToolBar;
+            //var maintoolbar = MainActivity.GetToolbar();
             //var maintoolbar = FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Id.toolbar);
 
             if (maintoolbar == null || Element == null)
             {
                 return;
             }
-
+            isLoaded = true;
             maintoolbar.Title = Element.Title;
             maintoolbar.InflateMenu(Resource.Menu.mainmenu);
 
@@ -61,23 +84,22 @@ namespace DemoChat.Droid.CustomRenderers
                 return;
             }
 
-            _searchView.QueryTextChange += searchView_QueryTextChange;
-            _searchView.QueryTextSubmit += searchView_QueryTextSubmit;
+            _searchView.QueryTextChange += SearchView_QueryTextChange;
+            _searchView.QueryTextSubmit += SearchView_QueryTextSubmit;
             _searchView.QueryHint = (Element as SearchPage)?.SearchPlaceHolderText;
             _searchView.ImeOptions = (int)ImeAction.Search;
             _searchView.InputType = (int)InputTypes.TextVariationNormal;
-            _searchView.MaxWidth = int.MaxValue;        //Hack to go full width - http://stackoverflow.com/questions/31456102/searchview-doesnt-expand-full-width
+            _searchView.MaxWidth = int.MaxValue;
         }
 
-        private void searchView_QueryTextSubmit(object sender, SearchView.QueryTextSubmitEventArgs e)
+        private void SearchView_QueryTextSubmit(object sender, SearchView.QueryTextSubmitEventArgs e)
         {
             if (e == null)
             {
                 return;
             }
 
-            var searchPage = Element as SearchPage;
-            if (searchPage == null)
+            if (!(Element is SearchPage searchPage))
             {
                 return;
             }
@@ -86,10 +108,9 @@ namespace DemoChat.Droid.CustomRenderers
             e.Handled = true;
         }
 
-        private void searchView_QueryTextChange(object sender, SearchView.QueryTextChangeEventArgs e)
+        private void SearchView_QueryTextChange(object sender, SearchView.QueryTextChangeEventArgs e)
         {
-            var searchPage = Element as SearchPage;
-            if (searchPage == null)
+            if (!(Element is SearchPage searchPage))
             {
                 return;
             }

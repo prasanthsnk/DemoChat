@@ -3,7 +3,7 @@ using DemoChat.ViewModels;
 using DemoChat.Views.Controls;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Windows.Input;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -23,14 +23,17 @@ namespace DemoChat.Views
             this.BindingContext = chatViewModel;
             LoadData();
         }
-        //public ChatPage(string region)
-        //{
-        //    InitializeComponent();
-        //    this.region = region;
-        //    chatViewModel = new ChatViewModel(region);
-        //    this.BindingContext = chatViewModel;
-        //    LoadData();
-        //}
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+          //  LoadSearch();
+        }
+        public async void LoadSearch()
+        {
+            await Task.Delay(1500);
+            ShowSearch = "Show";
+        }
 
         private async void UpdateIsRead() {
             int id = await App.Database.UpdateIsRead(region);

@@ -1,6 +1,4 @@
 ﻿using Android.Runtime;
-using Android.Text;
-using Android.Views.InputMethods;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 using SearchView = Android.Support.V7.Widget.SearchView;
@@ -9,7 +7,7 @@ using DemoChat.Droid.CustomRenderers;
 using DemoChat.Views.Controls;
 using Xamarin.Forms.Platform.Android.AppCompat;
 using System.ComponentModel;
-using Plugin.CurrentActivity;
+using Android.Content;
 
 [assembly: ExportRenderer(typeof(TabbedSearchPage), typeof(TabbedSearchPageRenderer))]
 namespace DemoChat.Droid.CustomRenderers
@@ -17,7 +15,11 @@ namespace DemoChat.Droid.CustomRenderers
     class TabbedSearchPageRenderer : TabbedPageRenderer
     {
         private SearchView _searchView;
-
+        readonly Context context;
+        public TabbedSearchPageRenderer(Context context) : base(context)
+        {
+            this.context = context;
+        }
 
         protected override void OnElementChanged(ElementChangedEventArgs<TabbedPage> e)
         {
@@ -51,7 +53,7 @@ namespace DemoChat.Droid.CustomRenderers
             }
             var maintoolbar = MainActivity.ToolBar;
             maintoolbar.Menu?.RemoveItem(Resource.Menu.mainmenu);
-            //MainActivity.ToolBar?.Menu?.RemoveItem(Resource.Menu.mainmenu);
+            MainActivity.ToolBar?.Menu?.RemoveItem(Resource.Menu.mainmenu);
             base.Dispose(disposing);
         }
 

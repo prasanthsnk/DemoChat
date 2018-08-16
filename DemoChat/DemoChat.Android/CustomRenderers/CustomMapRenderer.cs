@@ -16,7 +16,7 @@ namespace DemoChat.Droid.CustomRenderers
     class CustomMapRenderer : MapRenderer, GoogleMap.IInfoWindowAdapter
     {
         List<CustomPin> customPins;
-        Context context;
+        readonly Context context;
         public CustomMapRenderer(Context context) : base(context)
         {
             this.context = context;

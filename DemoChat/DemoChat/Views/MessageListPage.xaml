@@ -1,7 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="DemoChat.Views.MessageListPage">
+<view:SearchPage
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+		xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+		SearchPlaceHolderText="Type to Search"
+              xmlns:view="clr-namespace:DemoChat.Views.Controls"
+		SearchCommand="{Binding SearchCommand}"
+    x:Class="DemoChat.Views.MessageListPage">
     <ContentPage.Content>
         <StackLayout>
             <ListView x:Name="chatList" HasUnevenRows="True"
@@ -30,4 +34,4 @@
             </ListView>
         </StackLayout>
     </ContentPage.Content>
-</ContentPage>
+</view:SearchPage>

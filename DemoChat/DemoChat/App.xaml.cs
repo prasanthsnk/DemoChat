@@ -5,6 +5,7 @@ using DemoChat.Views;
 using Plugin.FirebasePushNotification;
 using System;
 using System.IO;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -23,10 +24,13 @@ namespace DemoChat
             //DashboardPage dashboardPage = new DashboardPage();
             //NavigationPage.SetHasNavigationBar(dashboardPage, false);
             //   Navigation.PushAsync(dashboardPage);
+
+            //MainPage = new TestingPage();
+            // MainPage =new MasterTabbedPage();
+            // MainPage = new NavigationPage(new DetailPage());    
              MainPage = new DetailPage();
-            // MainPage = new NavigationPage(new MasterTabbedPage());
-            //MainPage = new NavigationPage(new DetailPage());
-        } 
+           
+        }
 
         protected override void OnStart()
         {

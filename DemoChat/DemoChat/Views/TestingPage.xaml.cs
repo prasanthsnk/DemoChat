@@ -21,6 +21,7 @@ namespace DemoChat.Views
         public TestingPage()
         {
             InitializeComponent();
+           // App.Current.MainPage = new NavigationPage( new DetailPage());
         }
 
         protected override void OnAppearing()

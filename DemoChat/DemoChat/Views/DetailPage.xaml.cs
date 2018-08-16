@@ -14,6 +14,17 @@ namespace DemoChat.Views
         {
             base.OnCurrentPageChanged();
             this.Title = this.CurrentPage.Title;
+            //switch (Title) {
+            //    case "Home":
+            //        (this.CurrentPage as SourceListPage).LoadSearch();
+            //        break;
+            //    case "Notification":
+            //        (this.CurrentPage as MessageListPage).LoadSearch();
+            //        break;
+            //    case "Saved Messages":
+            //        (this.CurrentPage as ChatPage).LoadSearch();
+            //        break;
+            //}
         }
          
         public void UpdateUiAsync(int id)
